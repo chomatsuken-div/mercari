@@ -1,0 +1,148 @@
+= render "shared/header"
+%nav.breadCrumbs
+  %ul
+    %li
+      = link_to "メルカリ", root_path
+    %li
+      = fa_icon "angle-right"
+    %li
+      = link_to "hoge", ""
+    %li
+      = fa_icon "angle-right"
+    %li
+      = link_to "fuga", ""
+    %li
+      = fa_icon "angle-right"
+    %li
+      = link_to "piyo", ""
+    %li
+      = fa_icon "angle-right"
+    %li
+      %p 名前
+.main
+  .showMain
+    .contentLeft
+      = link_to "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8" do
+        = image_tag"side_banner.jpg", size: "280x238"
+    .contentRight
+      .topContent
+        .itemBox
+          %h2.itemBox__name 商品名
+          .itemBox__body
+            %ul
+              %li
+                = image_tag"", size: "300x285"
+                .soldout
+                .soldoutText 売り切れ
+                %ul
+                  %li
+                    = image_tag "", size: "75x75"
+              %li.table
+                %table
+                  %tbody
+                    %tr
+                      %th 出品者
+                      %td だれ誰
+                    %tr
+                      %th カテゴリー
+                      %td
+                        = link_to "メインカテゴリー", ""
+                        %br
+                        = link_to "サブカテゴリー", ""
+                        %br
+                        = link_to "アイテム", ""
+                    %tr
+                      %th ブランド
+                      %td
+                        = link_to "ブランド名", "#"
+                    %tr
+                      %th 商品のサイズ
+                      %td これくらい
+                    %tr
+                      %th 商品の状態
+                      %td こんなもん
+                    %tr
+                      %th 配送料の負担
+                      %td 100円
+                    %tr
+                      %th 発送元の地域
+                      %td
+                        = link_to "青森", ""
+                    %tr
+                      %th 発送日の目安
+                      %td 3日
+          .itemBox__price
+            %span
+              4000円
+            %span
+              (税込)
+            %span
+              送料込み
+            -# 購入ボタンはつけてください
+          .itemDetail 詳細情報
+          %ul
+            - if user_signed_in?
+              %li.optionalBtn.likeBtn.likeBtn--red{id: "unlikeBtn"}
+                = fa_icon "heart", text: "いいね 1", id: ""
+              -# %li.optionalBtn.likeBtn{id: "likeBtn"}
+              -#   = fa_icon "heart", text: "いいね #{@product.like_count}"
+            %li.optionalBtn
+              = link_to "#" do
+                = fa_icon "flag", text: "不適切な商品の通報"
+            %li.optionalBtn
+              = link_to "#" do
+                = fa_icon "lock", text: "あんしん・あんぜんへの取り組み"
+        -# - if user_signed_in?
+        -#   .commentBox
+        -#     - if @comments
+        -#       %ul.commentContents
+        -#         - @comments.each do |comment|
+        -#           %li.commentContent
+        -#             .commentUser
+        -#               = link_to user_path(comment.user) do
+        -#                 %figure
+        -#                   = image_tag "member_photo_noimage_thumb.png"
+        -#                 %p.userName #{comment.user.nickname}
+        -#             .commentBody
+        -#               .commentBody__text
+        -#                 %p #{comment.body}
+        -#               %ul.commentBody__time
+        -#                 = content_tag(:li, fa_icon("clock-o", text: "#{comment.created_date}"))
+        -#                 %li
+        -#                   %ul.optionBtns
+        -#                     - if user_signed_in? && comment_ownner?(comment)
+        -#                       %li
+        -#                         = link_to "/products/#{comment.product.id}/comments/#{comment.id}", method: :DELETE, id: "delete--comment" do
+        -#                           = fa_icon"trash", class: "optionBtn"
+        -#                       %li
+        -#                         = link_to product_comment_path(@product, comment), method: :PATCH, id: "edit--comment" do
+        -#                           = fa_icon"edit", class: "optionBtn"
+        -#                     %li
+        -#                       = link_to "#" do
+        -#                         = fa_icon"flag"
+        -#     %p.noticeMsg
+        -#       相手のことを考え丁寧なコメントを心がけましょう。
+        -#       %br
+        -#       不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        -#     - if current_user
+        -#       = form_for [@product, @comment] do |f|
+        -#         = f.text_area :body, required: true
+        -#         %br
+        -#         = button_tag type: "submit", class: "commentBtn" do
+        -#           = fa_icon "comment", text: "コメントする"
+      %ul.links
+        %li
+          = link_to "#" do
+            = fa_icon "angle-left"
+            %span
+            前の商品
+        %li
+          = link_to "#" do
+            %span 後ろの商品
+            = fa_icon "angle-right"
+      .relatedItems
+        = link_to "カテゴリをもっと見る", ""
+
+= render "shared/banner"
+= render "shared/footer"
+= render "shared/purchaseBtn"

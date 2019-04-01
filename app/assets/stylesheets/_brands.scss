@@ -1,0 +1,31 @@
+//brand--index
+.brandTitle {
+  text-decoration: none;
+  display: block;
+  border-radius: 5px 5px 0 0;
+  padding: 16px 10px 8px;
+  background-color: $red;
+  color: $white;
+  text-align: left;
+  font-weight: bold;
+  font-size: 22px;
+}
+.brandItems {
+  padding: 16px;
+  @include clearfix();
+  .brandItem {
+    margin: 8px 0;
+    display: inline-block;
+    width: calc(100% / 2);
+    float: left;
+    a {
+      color: $skyBlue;
+      text-decoration: none;
+      font-size: 14px;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+//end

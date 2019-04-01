@@ -1,0 +1,32 @@
+= render "shared/header"
+%nav.breadCrumbs
+  %ul
+    %li
+      = link_to "メルカリ", root_path
+    %li
+      = fa_icon "angle-right"
+    %li
+      = link_to " マイページ", user_path(current_user)
+    %li
+      = fa_icon "angle-right"
+    %li
+      %p 購入した商品 - 過去の取引
+.main
+  .contents
+    = render "leftcontent"
+    .rightContent
+      %h2.listingsHeader 購入した商品
+      %ul.listingsTab
+        %li.tabItem.tabItem--second
+          = link_to "取引中", purchase_user_path(current_user)
+        %li.tabItem.tabItem--second.active
+          = link_to "過去の取引", "#"
+      - if @products.empty?
+        %ul.itemNotFound
+          %li.itemNotFound__text 過去の取引がありません
+      - else
+        %ul.itemLists
+          = render partial: "users/product", collection: @products
+= render "shared/banner"
+= render "shared/footer"
+= render "shared/purchaseBtn"

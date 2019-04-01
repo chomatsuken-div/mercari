@@ -1,0 +1,51 @@
+.reviewBox {
+  padding: 24px;
+  background-color: $white;
+  margin: 10px 0;
+  .reviewHeader {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+    text-align: center;
+  }
+  .reviewNotice {
+    padding: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #fff6de;
+    margin: 0 0 10px;
+  }
+  .new_review {
+    #review_body {
+      width: calc(100% - 20px);
+      min-height: 104px;
+      padding: 10px;
+    }
+    .commentBtn {
+      @include btn();
+      font-size: 18px;
+    }
+    input {
+      margin: 10px 25px 0;
+    }
+    label {
+      padding: 10px 0 0;
+      position: relative;
+      i {
+        font-size: 30px;
+        position: absolute;
+        left: -20px;
+        top: 5px;
+      }
+      .smile {
+        color: $red;
+      }
+      .meh {
+        color: green;
+      }
+      .frown {
+        color: $skyBlue;
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+= render "shared/header"
+%nav.breadCrumbs
+  %ul
+    %li
+      = link_to "メルカリ", root_path
+    %li
+      = fa_icon "angle-right"
+    %li
+      = link_to "マイページ", user_path(current_user)
+    %li
+      = fa_icon "angle-right"
+    %li
+      %p いいね！ 一覧
+.main
+  .contents
+    = render "leftcontent"
+    .rightContent
+      %h2.likeHeader いいね！ 一覧
+      - if @products.empty?
+        %ul.itemNotFound
+          %li.itemNotFound__text いいね！がありません
+      - else
+        %ul.itemLists
+          = render partial: "users/product", collection: @products
+= render "shared/banner"
+= render "shared/footer"
+= render "shared/purchaseBtn"

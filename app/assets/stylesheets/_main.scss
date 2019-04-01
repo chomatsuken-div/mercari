@@ -1,0 +1,495 @@
+//shared
+body {
+  font-family: $fontstyle;
+}
+
+//global--header
+.pcHeader {
+  .headerInner {
+    width: 1020px;
+    min-height: 82px;
+    margin: 0 auto;
+    padding: 8px 0 0;
+    .mainHeader {
+    @include clearfix();
+    position: relative;
+      .icon {
+        float: left;
+      }
+      .searchBox {
+        float: right;
+        position: relative;
+        &--input {
+          width: 870px;
+          height: 36px;
+          padding: 0 0 0 5px;
+        }
+        button {
+          font-size: 26px;
+          height: 34px;
+          margin: 3px;
+          border: 0;
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+      }
+      .resultLists {
+        float: right;
+        position: absolute;
+        right: 0;
+        top: 36px;
+        z-index: 2;
+        .resultItem {
+          line-height: 36px;
+          background-color: $white;
+          border: 1px solid $hexWhite;
+          & + .resultItem {
+            border-top: 0;
+          }
+          a {
+            padding: 0 0 0 5px;
+            width: 872px;
+            height: 36px;
+            display: inline-block;
+            text-decoration: none;
+            font-size: 20px;
+            color: $hexGray20;
+          }
+        }
+      }
+    }
+    .nav {
+    @include clearfix();
+    font-size: 14px;
+      .listsLeft {
+        float: left;
+        position: relative;
+        &__item {
+          float: left;
+          line-height: 38px;
+          padding: 0 0 0 16px;
+          a {
+          color: $hexGray20;
+          text-decoration: none;
+          line-height: 32px;
+          &:hover {
+            color: $skyBlue;
+            }
+          }
+          &--first {
+            text-decoration: none;
+            padding: 0;
+          }
+        }
+      }
+      .listsRight {
+        float: right;
+        &__item {
+          float: left;
+          color: $hexGray20;
+          line-height: 38px;
+          padding: 0 0 0 16px;
+          a {
+            color: $hexGray20;
+            text-decoration: none;
+            line-height: 32px;
+          &:first-child {
+            @include clearfix();
+            line-height: 38px;
+          }
+          img {
+              border-radius: 50px;
+              float: left;
+              margin: 3px 0 0;
+            }
+            span {
+              float: left;
+              padding: 0 0 0 5px;
+            }
+            &:hover {
+              color: $skyBlue;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+//end
+
+//global--campaignBanner
+.campaignBanner {
+  text-align: center;
+  img {
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}
+//end
+//LP
+.main {
+  .mainVisual {
+    height: 390px;
+    background-image: image-url("main_bg_pc.jpg");
+    position: relative;
+    padding: 0 210px;
+    .content {
+      float: left;
+      width: 480px;
+      padding: 35px 0 0 0;
+      &__subtitle {
+        text-shadow: $shadow;
+        font-size: 60px;
+        line-height: 1.2;
+        color: $white;
+        font-weight: bold;
+      }
+      &__text {
+        text-shadow: $shadow;
+        font-size: 18px;
+        color: $white;
+        line-height: 1.77778;
+        margin: 16px 0 0 0;
+      }
+      &__btn {
+        margin: 24px 0 0 0;
+      }
+    }
+    .picture {
+      position: absolute;
+      top: 0;
+      right: 210px;
+    }
+  }
+  .topIntroduction {
+    padding: 40px 20px;
+    .subtitle {
+      text-align: center;
+      font-size: 26px;
+      line-height: 1.4;
+      font-weight: bold;
+    }
+    .lists {
+      padding: 0 84px;
+      @include clearfix();
+      text-align: center;
+      .list {
+        width: 30%;
+        margin: 16px 3.3% 0 0;
+        float: left;
+        &__text {
+          font-weight: bold;
+          font-size: 28px;
+          line-height: 50px;
+          margin: 24px 0 0 2px;
+          .number {
+            display: inline-block;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 30px;
+            text-align: center;
+            margin: 0 10px 0 0;
+            background-color: $red;
+            color: $white;
+          }
+        }
+        img {
+          margin: 16px 0 0;
+        }
+        &__description {
+          font-size: 20px;
+          line-height: 1.5;
+          margin: 16px 0 0;
+        }
+        &--last {
+        margin: 16px 0 0;
+        }
+      }
+    }
+  }
+  .topMiddleDl {
+    background-image: image-url("download_area_bg_pc.jpg");
+    height: 400px;
+    &__inner {
+      color: $white;
+      text-align: center;
+      .subtitle {
+        padding: 60px 0 0;
+        font-size: 27px;
+        font-weight: bold;
+        line-height: 1.4;
+      }
+      .text {
+        font-size: 18px;
+        margin: 18px 0;
+        line-height: 1.5;
+      }
+      .btn {
+        padding: 15px 0 0;
+        img {
+          margin: 0 20px 0 0 ;
+        }
+      }
+    }
+  }
+  .topKeyFeatures {
+    padding: 60px 100px;
+    background-color: $white;
+    .head {
+      font-size: 27px;
+      text-align: center;
+      margin: 0 0 40px;
+      font-weight: bold;
+    }
+    .items {
+      width: 1048px;
+      margin: 0 auto;
+      padding: 0 0 0 25px;
+      @include clearfix();
+      .item {
+        float: left;
+        height: 300px;
+        width: 230px;
+        text-align: center;
+        padding: 0 25px 0 0;
+        &__img {
+          margin: 0 auto;
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+          line-height: 120px;
+          background-color: $hexWhite;
+          img {
+            padding: 28px 0;
+          }
+        }
+        &__subtitle {
+          margin: 38px 0 10px;
+          font-size: 19px;
+          font-weight: bold;
+        }
+        &__detail {
+          margin: 0 0 40px;
+          font-size: 17px;
+          font-weight: 200;
+        }
+        &--last {
+          padding: 0;
+        }
+      }
+    }
+  }
+  .pickupContainer {
+    padding: 40px 0 0;
+    background-color: $hexWhite;
+    height: 100%;
+    .head {
+      text-align: center;
+      font-size: 28px;
+      line-height: 1.4;
+      font-weight: bold;
+    }
+  }
+}
+//end
+
+//gloabl--appBanner
+.appBanner {
+  background-image: image-url("download_bg_pc.jpg");
+  height: 260px;
+  padding: 0 265px;
+  position: relative;
+  .inner {
+    color: $white;
+    &__title {
+      text-shadow: $shadow;
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 1.4;
+      padding: 40px 0 0;
+    }
+    &__text {
+      font-size: 35px;
+    }
+    &__icon {
+      margin: 20px 0 0;
+      .linkIcon {
+        padding: 14px 0 14px 20px;
+      }
+    }
+  }
+  .bgIcon {
+    position: absolute;
+    top: 0;
+    right: 265px;
+  }
+}
+//end
+
+//global--footer
+.pcFooter {
+  padding: 60px 0;
+  color: $white;
+  background-color: $hexGray13;
+  text-align: center;
+  .contents {
+    width: 1020px;
+    margin: 0 auto;
+    @include clearfix();
+    .content {
+      float: left;
+      width: 23%;
+      margin: 0 2% 0 0;
+      &--last {
+        ul {
+          position: relative;
+          left: 25%;
+        }
+      }
+      &__head {
+        margin: 0 0 20px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      li {
+        a {
+          @include clearfix();
+          color: $white;
+          text-decoration: none;
+          font-size: 12px;
+          line-height: 32px;
+          &:hover {
+            text-decoration: underline;
+          }
+          img {
+            margin: 6px 6px 6px 0;
+            float: left;
+          }
+          span {
+            float: left;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+      .icon {
+        opacity: 0.5;
+        &:last-child {
+          opacity: 1;
+        }
+      }
+    }
+  }
+  p {
+    font-size: 14px;
+  }
+}
+//end
+
+//global--btn
+.purchaseBtn {
+  height: 160px;
+  width: 160px;
+  background: $red;
+  text-align: center;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  &__text {
+    color: $white;
+    display: block;
+    font-size: 24px;
+    padding: 18px 0 0 0;
+    text-decoration: none;
+  }
+  &__icon {
+    color: $white;
+    padding: 10px 0 0 0;
+  }
+}
+//end
+
+//appstoreIcons
+.aBtn {
+  &:hover {
+    opacity: 0.5;
+  }
+}
+.gBtn {
+  &:hover {
+    opacity: 0.5;
+  }
+}
+//end
+
+//category, subcat, itemTree
+.tree {
+  z-index: 2;
+  position: absolute;
+  background-color: $white;
+  width: 789px;
+  @include clearfix();
+  .categoryTree {
+    background-color: $white;
+    float: left;
+    &--item {
+      a {
+        line-height: 40px;
+        display: block;
+        width: 250px;
+        padding: 3px 8px 3px 5px;
+        border-bottom: 1px solid $hexWhite;
+      }
+    }
+  }
+  .subcatTree {
+    background-color: $white;
+    min-height: 467px;
+    float: left;
+    &--item {
+      a {
+        display: block;
+        width: 250px;
+        padding: 1px 8px 1px 5px;
+        border-bottom: 1px solid $hexWhite;
+      }
+    }
+  }
+  .itemTree {
+    background-color: $white;
+    min-height: 467px;
+    float: left;
+    &--item {
+      a {
+        display: block;
+        width: 250px;
+        padding: 0 0 0 5px;
+        border-bottom: 1px solid $hexWhite;
+      }
+    }
+  }
+}
+.displayNone {
+  display: none;
+}
+//end
+//pulldown
+.brandsPulldown {
+  position: absolute;
+  z-index: 1;
+  background-color: $white;
+  .brandsPulldown--item {
+    a {
+      line-height: 40px;
+      display: block;
+      padding: 3px 8px 3px 5px;
+      border-bottom: 1px solid $hexWhite;
+      width: 250px;
+    }
+  }
+}

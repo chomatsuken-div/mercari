@@ -1,0 +1,46 @@
+.contentRight--region {
+  width: 700px;
+  .indexBox {
+    padding: 16px 8px 16px 50px;
+    @include clearfix();
+    background-color: $white;
+    font-weight: bold;
+    .regionIndex {
+      a {
+        @include indexBox();
+      }
+    }
+  }
+  .titleBox {
+    background-color: $white;
+    font-size: 22px;
+    padding: 16px 10px 8px;
+    margin: 30px 0 0;
+    font-weight: bold;
+  }
+  .regionItems {
+    background-color: $white;
+    padding: 10px;
+    @include clearfix();
+    .regionItem {
+      float: left;
+      line-height: 26px;
+      margin: 10px;
+      a {
+        color: $skyBlue;
+        font-size: 18px;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  .topBtn {
+    background-color: $white;
+    padding: 0 8px 20px;
+    a {
+      font-size: 14px;
+    }
+  }
+}

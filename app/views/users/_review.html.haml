@@ -1,0 +1,11 @@
+%li.itemList
+  = link_to new_product_review_path(product) do
+    - if product_soldout?(product)
+      .soldout--small
+      .soldoutText--small 売切
+    %figure.iconPic
+      = image_tag "#{product.captured_images.first.content}"
+    .contents
+      .content__body #{product.name}
+      .content__price ¥ #{product.price}
+    = fa_icon "angle-right", {class: "angleRight"}

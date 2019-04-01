@@ -1,0 +1,252 @@
+//user--show
+.breadCrumbs {
+  width: 100%;
+  border-top: 1px solid $hex;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  position: relative;
+  ul {
+    @include clearfix();
+    padding:17px 0 16px;
+    margin: 0 auto;
+    width: 1020px;
+    font-size: 14px;
+    li {
+      padding: 0 10px 0 0;
+      float: left;
+      &:last-child {
+        font-weight: bold;
+      }
+      a {
+        text-decoration: none;
+        color: $hexGray20;
+        &:hover {
+          color: $skyBlue;
+        }
+      }
+    }
+  }
+}
+.main {
+  background: $hexWhite;
+  .contents {
+    width: 1020px;
+    @include clearfix();
+    margin: 0 auto;
+    padding: 40px 0 0;
+    .leftContent {
+      float: left;
+      ul {
+        li {
+          border-top: 1px solid $hex;
+          &:hover {
+            opacity: 0.5;
+          }
+          a {
+            @include clearfix();
+            display: block;
+            padding: 16px;
+            background: $white;
+            color: $hexGray20;
+            text-decoration: none;
+            font-size: 14px;
+            span {
+              float: left;
+            }
+            i {
+              float: right;
+            }
+          }
+        }
+      }
+      h3 {
+        margin: 40px 0 0;
+        font-weight: bold;
+        font-size: 16px;
+      }
+      a {
+        img {
+          margin: 40px 0;
+          &:hover {
+            opacity: 0.5;
+          }
+        }
+      }
+    }
+    .rightContent {
+      float: right;
+      width: 700px;
+      .contentTop {
+        background-color: $white;
+        @include list();
+        .mypageIcon {
+          background-image: image-url("user-bg.jpg");
+          height: 200px;
+          a {
+            padding: 30px 0 0;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            color: $hexGray20;
+            figure {
+              margin: 0 auto;
+              text-align: center;
+              img {
+                border-radius: 50%;
+              }
+            }
+            h2 {
+              font-weight: bold;
+              padding: 5px 0 0;
+            }
+          }
+          .mypageNum {
+            @include clearfix();
+            padding: 20px 240px 0;
+            li {
+              float: left;
+              width: calc(100% / 2);
+              text-align: center;
+            }
+          }
+        }
+      }
+      .contentBottom {
+        margin: 30px 0 0;
+        background-color: $white;
+        @include list();
+        h2 {
+          padding: 0 16px;
+          font-size: 16px;
+          font-weight: bold;
+          line-height: 72px;
+        }
+      }
+    }
+  }
+}
+//end
+//likes
+.rightContent {
+  background-color: $white;
+  .likeHeader {
+    padding: 15px 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 26px;
+    border-bottom: 1px solid $hexWhite;
+  }
+  .itemLists {
+    .itemList {
+      @include clearfix();
+      width: 100%;
+      border-bottom: 1px solid $hexWhite;
+      min-height: 72px;
+      position: relative;
+      &:last-child {
+        border-bottom: none;
+      }
+      &:hover {
+        opacity: 0.5;
+      }
+      a {
+        text-decoration: none;
+        color: $hexGray20;
+      }
+      .soldout--small {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 20px 20px 0 0;
+        border-color: $red transparent transparent transparent;
+      }
+      .soldoutText--small {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 6px;
+        color: $white;
+      }
+      .iconPic {
+        margin: 0;
+        padding: 10px;
+        float: left;
+        img {
+          height: 48px;
+          width: 48px;
+        }
+      }
+      .contents {
+        padding: 10px 0;
+        float: left;
+        width: calc(100% - 98px);
+        .content__body {
+          padding: 0 0 5px 0
+        }
+      }
+      .angleRight {
+        float: right;
+        font-size: 26px;
+        padding: 0 10px;
+        height: 100%;
+        line-height: 72px;
+      }
+    }
+  }
+}
+//end
+//listings
+.rightContent {
+  .listingsHeader {
+    line-height: 72px;
+    font-size: 16px;
+    padding: 0 16px;
+    color: $hexGray20;
+    font-weight: bold;
+  }
+  .listingsTab {
+    width: 700px;
+    background-color: $hexWhite;
+    @include clearfix();
+    .tabItem {
+      font-size: 16px;
+      font-weight: bold;
+      float: left;
+      text-align: center;
+      width: calc(100% / 3);
+      &--second {
+        width: calc(100% / 2);
+      }
+      a {
+        display: block;
+        line-height: 72px;
+        color: $hexGray20;
+        text-decoration: none;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .active {
+      background-color: $white;
+      border-top: 2px solid $red;
+    }
+  }
+}
+//end
+//itemNotFound
+.itemNotFound {
+  background-image: image-url("logo-gray-icon.svg");
+  background-repeat: no-repeat;
+  background-position: center 40px;
+  background-color: $white;
+  .itemNotFound__text {
+    padding: 160px 0 60px;
+    text-align: center;
+    color: $hexGray20;
+    opacity: 0.3;
+    font-size: 20px;
+    font-weight: bold;
+  }
+}

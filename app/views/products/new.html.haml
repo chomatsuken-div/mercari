@@ -1,0 +1,112 @@
+.devise
+  = render "devise/shared/header"
+  .productMainSection
+    .inner
+      %h2.title 商品の情報を入力
+      .productForm
+        = form_for @product do |f|
+          .formSection
+            = f.hidden_field :user_id, value: current_user.id
+            .productForm__field.productForm__field--top
+              = f.label :出品画像
+              %span.formRequired 必須
+              %br/
+              %p 最大4枚までアップロードできます
+              %ul.formUploader
+                .uploadInfo
+                  %p ドラッグアンドドロップ
+                  %span またはクリックしてアップロード
+          .formSection
+            .productForm__field
+              = f.label :商品名
+              %span.formRequired 必須
+              %br/
+              = f.text_field :name, required: true, placeholder: "商品名（40字まで）", class: "inputField"
+            .productForm__field
+              = f.label :商品の説明
+              %span.formRequired 必須
+              %br/
+              = f.text_area :detail, required: true, placeholder: "商品説明（1,000字まで）例）2018年に購入した、革ジャンです。黒みがかった見た目です。傷等はございません。", class: "inputField inputField__area", rows: "7"
+          .formSection
+            .contentLeft
+              %h3 商品の詳細
+            .contentRight
+              .productForm__field.productForm__field--category
+                = f.label :カテゴリー
+                %span.formRequired 必須
+                %br/
+                = f.collection_select(:size, [], :id , :name, {prompt: "---"}, {class: "inputField inputField__select", id: "category", required: true})
+              .productForm__field
+                = f.label :ブランド
+                %br/
+                = f.text_field :size, placeholder: "例) ルイ ヴィトン"
+              .resultLists
+              .productForm__field
+                = f.label :商品の状態
+                %span.formRequired 必須
+                %br/
+                = f.select(:status, [["新品/未使用", 0], ["未使用に近い", 1], ["目立った傷や汚れなし", 2], ["やや傷や汚れあり", 3], ["傷や汚れあり", 4], ["状態が悪い", 5]], {prompt: "---"}, {class: "inputField inputField__select", required: true})
+          .formSection
+            .contentLeft
+              %h3
+                配送について
+                %span
+                = link_to "#" do
+                  = fa_icon "question-circle"
+            .contentRight
+              .productForm__field
+                = f.label :配送料の負担
+                %span.formRequired 必須
+                %br/
+                = f.select(:shipping_fee, [["送料込み（出品者負担）", 0], ["着払い（購入者負担）", 1]], {prompt: "---"}, {class: "inputField inputField__select", required: true})
+              .productForm__field
+                = f.label :発送元の地域
+                %span.formRequired 必須
+                %br/
+                = f.collection_select(:price, [], :id, :name, {prompt: "---"}, {class: "inputField inputField__select", required: true})
+              .productForm__field
+                = f.label :発送までの日数
+                %span.formRequired 必須
+                %br/
+                = f.select(:expected_date, [["1-2日で発送", 0], ["2-3日で発送", 1], ["4-7日で発送", 2]], {prompt: "---"}, {class: "inputField inputField__select", required: true})
+          .formSection
+            .contentLeft
+              %h3
+                販売価格（300 - 9,999,999円）
+                %span
+                = link_to "#" do
+                  = fa_icon "question-circle"
+            .contentRight.contentRight--price
+              .productForm__field
+                %ul
+                  %li
+                    = f.label :価格（円）
+                    %span.formRequired 必須
+                  %li
+                    = f.text_field :price, required: true, placeholder: "例）1,000", class: "inputField"
+              .profitholder
+                %ul
+                  %li 販売手数料（10%）
+                  %li -
+                %ul.profitholder--output
+                  %li 販売利益
+                  %li -
+          .formSection
+            .confirmation
+              %p
+                = link_to "禁止されている出品", "#"
+                、
+                = link_to "行為", "#"
+                を必ずご確認ください。
+              %p
+                またブランド品でシリアルナンバー等がある場合はご記載ください。
+                = link_to "偽ブランドの販売", "#"
+                は犯罪であり処罰される可能性があります。
+              %p
+                また、出品をもちまして
+                = link_to "加盟店規約", "#"
+                に同意したことになります。
+            .productForm__actions
+              = f.submit "出品する", class: "productBtn"
+            = link_to "もどる", :back, class: "returnBtn"
+  = render "devise/shared/footer"

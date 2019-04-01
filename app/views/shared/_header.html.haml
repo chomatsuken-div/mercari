@@ -1,0 +1,43 @@
+%header.pcHeader
+  .headerInner
+    .mainHeader.clearfix
+      %h1.icon
+        = link_to image_tag("logo.svg", size: "134x36"), root_path
+      .searchBox
+        = form_tag "", method: :get do
+          %input.searchBox--input{id: "searchInput", name: "key",placeholder: "キーワードから探す"}
+            =button_to type: "submit" do
+              =fa_icon "search"
+      %ul.resultLists
+    .nav.clearfix
+      %ul.listsLeft
+        %li.listsLeft__item.listsLeft__item--first
+          = link_to "カテゴリー", "", {id: "catBtn"}
+          .tree.displayNone
+            %ul.categoryTree
+              - [].each do |category|
+                %li.categoryTree--item= link_to "#{category.name}", "", {}
+        %li.listsLeft__item
+          = link_to "ブランド", "", {id: "brandBtn"}
+          %ul.brandsPulldown.displayNone
+            - [].each do |brand|
+              %li.brandsPulldown--item
+                = link_to "", "", {}
+      - if user_signed_in?
+        %ul.listsRight
+          %li.listsRight__item
+            = link_to "" do
+              = image_tag("member_photo_noimage_thumb.png", size: "32x32",)
+              %span マイページ
+          %li.listsRight__item
+            = link_to "#" do
+              = fa_icon "bell", text: "お知らせ"
+          %li.listsRight__item
+            = link_to "#" do
+              = fa_icon "check", text: "やることリスト"
+      - else
+        %ul.listsRight
+          %li.listsRight__item.listsRight__item--login
+            = link_to "ログイン", ""
+          %li.listsRight__item.listsRight__item--new
+            = link_to "新規会員登録", ""

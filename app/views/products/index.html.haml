@@ -1,0 +1,153 @@
+= render "shared/header"
+.campaignBanner
+  = link_to image_tag("banner.jpg", size: "600x100"), "https://www.mercari.com/jp/promotion/201711_yuyu/"
+.main
+  %section.mainVisual
+    .content
+      %h2.content__subtitle
+        スマホでかんたん
+        %br
+        フリマアプリ
+      %p.content__text
+        メルカリはスマホカメラからすぐに出品できる
+        %br
+        購入時も安心な独自システムのアプリです
+      .content__btn
+        = link_to image_tag("app-store.svg", size: "170x50"), "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8", class: "aBtn"
+        = link_to image_tag("google-play.svg", size: "170x50"), "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja", class: "gBtn"
+    .picture
+      = image_tag"main_content_pc.png", size: "440x390"
+  %section.topIntroduction
+    %h2.subtitle
+      メルカリは、かんたんに売り買いができて、
+      %br
+      あんしん・あんぜんなお取引ができる
+      %br
+      フリマアプリです。
+    %ul.lists
+      %li.list
+        %h3.list__text
+          %span.number 1
+          簡単に出品できる
+        = image_tag"start1.jpg",size: "321x321"
+        %p.list__description
+          スマホで写真を撮って
+          %br
+          特徴を入力するだけで
+          %br
+          簡単に出品できます。
+      %li.list
+        %h3.list__text
+          %span.number 2
+          すぐに購入できる
+        = image_tag"start2.jpg",size: "321x321"
+        %p.list__description
+          特徴を入力するだけで
+          %br
+          あとは出品者からの発送を待つだけ
+          %br
+          です。
+      %li.list.list--last
+        %h3.list__text
+          %span.number 3
+          商品がたくさん
+        = image_tag"start3.jpg",size: "321x321"
+        %p.list__description
+          毎日数十万品以上の新商品が
+          %br
+          出品されるので、ほしいものがきっ
+          %br
+          と見つかります。
+  %section.topMiddleDl
+    .topMiddleDl__inner
+      %h2.subtitle 誰でも簡単に、売ったり買ったりを楽しめる
+      %p.text
+        メルカリには、
+        %br
+        ファッションから雑貨、家電、本や漫画に至るまで
+        %br
+        幅広いジャンルの商品がたくさん。
+        %br
+        今はもう店頭に置いていない掘り出し物も見つかるかもしれません。
+        %br
+        早速アプリをダウンロードしてはじめよう！
+      .btn
+        = link_to image_tag("app-store.svg", size: "170x50.36", class: "aBtn"), "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8"
+        = link_to image_tag("google-play.svg", size: "170x50.36", class: "gBtn"), "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja"
+  %section.topKeyFeatures
+    %h2.head メルカリの特徴
+    .items
+      %section.item.clearfix
+        %figure.item__img
+          = image_tag"watch.svg", size: "64x64"
+        %h3.item__subtitle 3分でかんたん売り買い
+        %p.item__detail
+          着なくなった服や小物、
+          %br
+          本などを売ってみよう！
+          %br
+          お小遣い稼ぎに使えます
+      %section.item
+        %figure.item__img
+          = image_tag"lock.svg", size: "64x64"
+        %h3.item__subtitle あんしんの売買システム
+        %p.item__detail
+          お金のやりとりはメルカリ
+          %br
+          が仲介し、商品が届いてか
+          %br
+          ら出品者に振り込まれるの
+          %br
+          で安心です
+      %section.item
+        %figure.item__img
+          = image_tag"card.svg", size: "64x64"
+        %h3.item__subtitle 多彩な支払い方法
+        %p.item__detail
+          購入した商品のお支払い
+          %br
+          は、クレジットカード/ポイ
+          %br
+          ント/売上金からどうぞ！
+      %section.item.item--last
+        %figure.item__img
+          = image_tag"free-jp.svg", size: "64x64"
+        %h3.item__subtitle 出品はもちろん無料
+        %p.item__detail
+          その他、会員登録料・月会
+          %br
+          費・カード手数料は一切か
+          %br
+          かりません
+  %section.pickupContainer
+    %h2.head ピックアップカテゴリー
+    .productBox
+      .productHead
+        = link_to "#" do
+          %h3.title 新規投稿商品
+      .productLists{id: "slickLists--0"}
+        = render []
+  %section.pickupContainer
+    %h2.head ピックアップブランド
+    .productBox
+      .productHead
+        = link_to "" do
+          %h3.title "ブランド名"
+      .productLists{id: "slickLists--1"}
+        .productList
+          = link_to "" do
+            .soldout--small
+            .soldoutText--small 売り切れ
+            %figure.productList--img
+              -# = image_tag"#{product.captured_images.first.content}"
+            .productList--body
+              %h3.name 名前
+              .details
+                %ul
+                  %li 5000円
+                  %li
+                    = fa_icon "heart", class: "likeIcon", text: "hoge"
+                %p (税込)
+= render "shared/banner"
+= render "shared/footer"
+= render "shared/purchaseBtn"

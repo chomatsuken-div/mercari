@@ -1,0 +1,31 @@
+.devise
+  = render "devise/shared/header"
+  .deviseSection
+    .inner
+      %h2.title 会員情報入力
+      .deviseForm
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          = devise_error_messages!
+          .deviseForm__field.deviseForm__field--top
+            = f.label :ニックネーム
+            %span.formRequired 必須
+            %br/
+            = f.text_field :nickname, autofocus: true, autocomplete: "off", placeholder: "例）山田太郎", class: "inputField", required: true
+          .deviseForm__field
+            = f.label :メールアドレス
+            %span.formRequired 必須
+            %br/
+            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可", class: "inputField", required: true
+          .deviseForm__field
+            = f.label :パスワード
+            %span.formRequired 必須
+            %br/
+            = f.password_field :password, autocomplete: "off", placeholder: "６文字以上", class: "inputField", required: true
+          .deviseForm__field
+            = f.label :パスワード（確認）
+            %span.formRequired 必須
+            %br/
+            = f.password_field :password_confirmation, autocomplete: "off", placeholder: "６文字以上", class: "inputField", required: true
+          .deviseForm__actions
+            = f.submit "次へ進む", class: "deviseBtn"
+  =render "devise/shared/footer"
