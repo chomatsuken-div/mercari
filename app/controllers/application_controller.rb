@@ -9,8 +9,10 @@ class ApplicationController < ActionController::Base
   end
 
   def basic_auth
+    user = ENV['BASIC_AUTH_USER']
+    pass = ENV['BASIC_AUTH_PASSWORD']
     authenticate_or_request_with_http_basic do |username, password|
-      username == ENV['BASIC_AUTH_USER'] && password == ENV['BASIC_AUTH_PASSWORD']
+      username == user && password == pass
     end
   end
 end
