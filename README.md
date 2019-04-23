@@ -1,29 +1,163 @@
-# これは何？
-社員研修用に利用する、freemarket_sampleのフロントのみ実装したものです。
+## usersテーブル
 
-# どうやって使うの？
+|Column     |Type   |Options|
+|-----------|-------|-------|
+|nickname   |string |null: false, unique: true, add_index|
+|email      |string |null: false, unique: true|
+|password   |string |null: false|
+|first_name |string |null: false|
+|family_name|string |null: false|
+|birth      |integer|null: false|
+|tell       |integer|null: false|
+|address    |string |null: false|
+|card       |string |       |
 
-## 1. Githubからダウンロードする
-上の方にボタンがあるので、ダウンロードしてください。クローンしないのは、誤ってプッシュしてこのリポジトリが変更されることを防ぐためです。
+### Association
+- has_many :sns_credentials
+- has_one :point
+- has_many :banks
+- has_many :reviews
+- has_one :item(seller)
+- has_one :item(buyer)
+- has_many :likes
+- has_many :item,through::members
+- has_many :messages
 
-## 2. 自分のPC上でダウンロードして来たzipを解凍
-ここで、Rubyのバージョンを2.5.1に変更してください。なければrbenvを利用して2.5.1をインストールしてください。
-また、`bundle install`もしておきましょう。
+## sns_credentialsテーブル
+|Column  |Type     |Options|
+|--------|---------|-------|
+|uid     |string   |null: false, unique: true|
+|provider|string   |null: false|
+|user_id |refarence|foreign_key: true|
 
-## 3. データベースの準備
-以下のコマンドで、データベースを準備します。この時、database.ymlを編集してデータベースの名前を変更しても構いません。
+### Association
+- belongs_to :user
 
-rails db:create
-rails db:migrate
+## pointsテーブル
+|Column  |Type     |Options|
+|--------|---------|-------|
+|point   |integer  |       |
+|user_id |refarence|foreign_key: true|
 
-この時DB名は各々決めて良い事とする
+### Association
+- belongs_to :user
 
-## 4.ユーザー作成
-users/sign_up にアクセスし、一人ユーザーを作成してください。
+## banksテーブル
+|Column       |Type     |Options|
+|-------------|---------|-------|
+|name         |string   |null: false|
+|bank_number  |string   |null: false, unique: true|
+|user_name    |string   |null: false|
+|user_id      |refarence|foreign_key: true|
 
-## 5.閲覧できるページの確認
-以下のページにアクセス可能です。一度確認してください。
-* top(/)
-* user:show(/users/1)
-* product:show(/products/1)
-* product:new(/products/new)
+### Association
+- belongs_to :user
+
+## reviewsテーブル
+|Column |Type     |Options|
+|-------|---------|-------|
+|item_id|reference|foreign_key: true|
+|user_id|reference|foreign_key: true|
+|rate   |integer  |       |
+
+### Association
+- belongs_to :item
+- belongs_to :user
+
+---------------------------------------------------------------------------
+
+## itemsテーブル
+
+|Column     |Type     |Options|
+|-----------|---------|-------|
+|name       |string   |null: false, unique: true, add_index|
+|price      |integer  |null: false|
+|stage      |integer  |null: false|
+|image      |string   |       |
+|seller_id  |refarence|foreign_key:{ to_table:users},index:false|
+|buyer_id   |refarence|foreign_key:{ to_table:users},index:false|
+|brand_id   |refarence|foreign_key: true|
+|category_id|refarence|foreign_key: true|
+|like_count |integer  |       |
+
+
+### Association
+- has_many :reviews
+- belongs_to :user(seller)
+- belongs_to :user(buyer)
+- belongs_to :brand
+- belongs_to :category
+- has_one :size
+- has_many :likes
+- has_many :user,through::members
+- has_many :messages
+
+## brandsテーブル
+|Column|Type  |Options|
+|------|------|-------|
+|name  |string|null: false, unique: true, add_index|
+
+### Association
+- has_one :item
+- has_one :category
+
+## categorysテーブル
+
+|Column        |Type     |Options|
+|--------------|---------|-------|
+|brand_id      |refarence|foreign_key: true|
+|name          |string   |null: false|
+|parent_id     |integer  |null: false|
+|lft           |integer  |       |
+|rgt           |integer  |       |
+|depth         |integer  |       |
+|children_count|integer  |       |
+
+### Association
+- has_one :item
+- belongs_to :brand
+
+## sizesテーブル
+|Column |Type     |Options|
+|-------|---------|-------|
+|item_id|reference|foreign_key: true|
+|size   |string   |null: false|
+
+### Association
+- belongs_to :item
+
+## likesテーブル
+|Column |Type     |Options|
+|-------|---------|-------|
+|item_id|refarence|foreign_key: true|
+|user_id|refarence|foreign_key: true|
+|like   |integer  |foreign_key: true|
+
+### Association
+- belongs_to :item
+- belongs_to :user
+
+------------------------------------------------------------
+
+## membersテーブル
+|Column |Type     |Options|
+|-------|---------|-------|
+|item_id|refarence|foreign_key: true|
+|user_id|refarence|foreign_key: true|
+
+### Association
+- belongs_to :item
+- belongs_to :user
+
+## messagesテーブル
+
+|Column |Type     |Options|
+|-------|---------|-------|
+|text   |text     |       |
+|image  |string   |       |
+|user_id|refarence|foreign_key: true|
+|item_id|refarence|foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :item
