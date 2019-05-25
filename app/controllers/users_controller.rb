@@ -29,4 +29,8 @@ class UsersController < ApplicationController
     @products = Product.is_purchased(current_user.id)
                        .where(transaction_status: 'completed')
   end
+
+  def sign
+    
+  end
 end

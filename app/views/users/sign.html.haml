@@ -1,0 +1,7 @@
+.sign_up
+  .mail
+    = link_to"新規会員登録", new_user_registration_path, class: "deviseBtn--blue"
+  .facebook
+    = link_to "Facebookで登録",user_facebook_omniauth_authorize_path
+  .google
+    = link_to "Googleで登録",user_google_oauth2_omniauth_authorize_path
