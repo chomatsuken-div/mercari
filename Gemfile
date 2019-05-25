@@ -42,9 +42,9 @@ gem "devise"
 gem 'carrierwave'
 gem 'fog-aws'
 
-gem 'recaptcha', require: "recaptcha/rails"
-gem 'payjp'
-gem 'jp_prefecture'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -57,6 +57,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'pry-rails'
 end
 
 group :development do

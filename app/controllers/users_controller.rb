@@ -3,6 +3,10 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def new
+
+  end
+
   def likes
     likes = current_user.likes
     @products = likes.map(&:product)
@@ -29,4 +33,5 @@ class UsersController < ApplicationController
     @products = Product.is_purchased(current_user.id)
                        .where(transaction_status: 'completed')
   end
+
 end
