@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   root to: "products#index"
-  get 'users/sign' => 'users#sign'
   devise_for :users,controllers: { omniauth_callbacks: 'users/omniauth_callbacks',
                                    registrations: 'users/registrations' }
-  resources :users, only: [:show] do
+  resources :users, only: [:show, :new] do
     member do
       get "likes", "listings", "in_progress", "completed", "purchase", "purchased"
     end
