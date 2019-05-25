@@ -10,7 +10,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def callback_for(provider)
     if user_signed_in?
       redirect_to root_path
-      return
     end
 
     sns_info = SnsCredential.from_omniauth(
