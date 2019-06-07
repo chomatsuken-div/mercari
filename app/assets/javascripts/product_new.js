@@ -63,10 +63,8 @@ $(document).on('turbolinks:load', ()=> {
     $('#product_price').on('keyup', function() {
       var input = parseInt($("#product_price").val());
       if (input >= 300 ) {
-        console.log('a')
       }
       else{
-        console.log('b')
       }
     });
   });

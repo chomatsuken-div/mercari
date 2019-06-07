@@ -43,7 +43,6 @@ function appendGrandChild(grandchild) {
 $('#category').change(function(e) {
 e.preventDefault();
 var parent = $(this).val();
-console.log(parent)
 $("#child-wrap").remove()
 $("#grandchild-wrap").remove()
 $.ajax({
