@@ -53,7 +53,6 @@ $.ajax({
   dataType: 'json' 
 })
 .done(function(child) {
-  console.log(child)
     appendChildSelect(child)
     child.forEach(function(child) {
       appendChild(child)
