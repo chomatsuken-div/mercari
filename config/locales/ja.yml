@@ -1,0 +1,7 @@
+ja:
+  enums:
+   product:
+     status:
+       sell: 出品中
+       buyed: 発送待ち
+       sell_stop: 出品停止

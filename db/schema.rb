@@ -10,22 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190516073624) do
+ActiveRecord::Schema.define(version: 20190607073607) do
+
+  create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name", null: false
+    t.string "ancestry"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
+  end
+
+  create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "src"
+    t.integer "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "products", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false
     t.text "detail"
-    t.integer "shipping_fee"
-    t.integer "expected_date"
     t.integer "price", null: false
     t.integer "like_count", default: 0
-    t.string "status", null: false
-    t.string "size"
-    t.integer "transaction_status", default: 0, null: false
-    t.integer "purchaser_id"
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "state_id", null: false
+    t.integer "shopping_fee_id", null: false
+    t.integer "prefecture_code", null: false
+    t.integer "brand_id"
+    t.integer "status", default: 0, null: false
+    t.integer "expected_date_id", null: false
+    t.integer "category_id", null: false
     t.index ["name"], name: "index_products_on_name"
     t.index ["price"], name: "index_products_on_price"
     t.index ["user_id"], name: "index_products_on_user_id"
