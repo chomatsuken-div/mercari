@@ -101,15 +101,18 @@
               border: 0.5px dashed #ccc;
               display: block;
               min-height: 184px;
-              text-align: center;
-              line-height: 184px;
               @include clearfix();
               position: relative;
               .uploadInfo {
                 position: absolute;
-                top: -40%;
+                top: 30%;
                 left: 30%;
                 font-weight: bold;
+                .js-file_group {
+                  input {
+                    display: none;
+                  }
+                }
                 p {
                   height: 20px;
                 }
@@ -151,9 +154,6 @@
                 width: 97%;
                 position: relative;
                 z-index: 3;
-              }
-              input {
-                display: none;
               }
             }
           }
