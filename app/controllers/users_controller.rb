@@ -25,13 +25,11 @@ class UsersController < ApplicationController
   end
 
   def purchase
-    @products = Product.is_purchased(current_user.id)
-                       .where(transaction_status: 'in_progress')
+    @products = Product.is_purchased(current_user.id).where(transaction_status: 'in_progress')
   end
 
   def purchased
-    @products = Product.is_purchased(current_user.id)
-                       .where(transaction_status: 'completed')
+    @products = Product.is_purchased(current_user.id).where(transaction_status: 'completed')
   end
 
 end
