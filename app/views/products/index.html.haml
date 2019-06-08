@@ -126,28 +126,17 @@
         = link_to "#" do
           %h3.title 新規投稿商品
       .productLists{id: "slickLists--0"}
-        = render []
+        - @products.each do |product|
+          = render 'products/product', product:product
   %section.pickupContainer
     %h2.head ピックアップブランド
     .productBox
       .productHead
         = link_to "" do
-          %h3.title "ブランド名"
+          %h3.title "ブランド名 NIKE"
       .productLists{id: "slickLists--1"}
-        .productList
-          = link_to "" do
-            .soldout--small
-            .soldoutText--small 売り切れ
-            %figure.productList--img
-              -# = image_tag"#{product.captured_images.first.content}"
-            .productList--body
-              %h3.name 名前
-              .details
-                %ul
-                  %li 5000円
-                  %li
-                    = fa_icon "heart", class: "likeIcon", text: "hoge"
-                %p (税込)
+        - @category_products.each do |product|
+          = render 'products/product', product:product
 = render "shared/banner"
 = render "shared/footer"
 = render "shared/purchaseBtn"
