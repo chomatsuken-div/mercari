@@ -16,6 +16,8 @@ class User < ApplicationRecord
   validates :password, presence: true, if: :sns?
 
   has_many :sns_credentials, dependent: :destroy
+  has_one :card
+  has_many :products
 
   def sns?
     @sns == nil

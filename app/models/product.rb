@@ -3,6 +3,8 @@ class Product < ApplicationRecord
     accepts_nested_attributes_for :images, allow_destroy: true
 
     belongs_to :category
+    belongs_to :brand
+    belongs_to :user
 
     enum status: { sell: 0, buyed: 1 , sell_stop: 2}
 

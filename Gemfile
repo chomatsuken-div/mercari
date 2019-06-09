@@ -51,6 +51,7 @@ gem 'jp_prefecture'
 gem 'ancestry'
 gem 'enum_help'
 gem 'rails-i18n'
+gem 'payjp'
 
 
 group :development, :test do

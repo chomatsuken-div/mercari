@@ -27,13 +27,14 @@
     .contentRight
       .topContent
         .itemBox
-          %h2.itemBox__name 商品名
+          %h2.itemBox__name
+            = @product.name
           .itemBox__body
             %ul
               %li
-                = image_tag"", size: "300x285"
+                = image_tag"#{@product.images.first.src}", size: "300x285"
                 .soldout
-                .soldoutText 売り切れ
+                .soldoutText 販売中
                 %ul
                   %li
                     = image_tag "", size: "75x75"
@@ -42,19 +43,20 @@
                   %tbody
                     %tr
                       %th 出品者
-                      %td だれ誰
+                      %td
+                        = @product.user.nickname
                     %tr
                       %th カテゴリー
                       %td
                         = link_to "メインカテゴリー", ""
                         %br
-                        = link_to "サブカテゴリー", ""
+                        = link_to ">サブカテゴリー", ""
                         %br
-                        = link_to "アイテム", ""
+                        = link_to ">#{@product.category.name}", ""
                     %tr
                       %th ブランド
                       %td
-                        = link_to "ブランド名", "#"
+                        = link_to "#{@product.brand.name}", "#"
                     %tr
                       %th 商品のサイズ
                       %td これくらい
@@ -67,18 +69,23 @@
                     %tr
                       %th 発送元の地域
                       %td
-                        = link_to "青森", ""
+                        = link_to "", ""
                     %tr
                       %th 発送日の目安
                       %td 3日
           .itemBox__price
             %span
-              4000円
+              = "#{@product.price}円"
             %span
               (税込)
             %span
               送料込み
-            -# 購入ボタンはつけてください
+          .card
+            = form_tag(product_payments_path(@product), method: :post) do
+              .card-body
+                = submit_tag("購入する", class: "btn btn-primary")
+
+            = link_to "カード登録画面に戻る", new_card_path, class: "btn btn-info clerfix"
           .itemDetail 詳細情報
           %ul
             - if user_signed_in?
