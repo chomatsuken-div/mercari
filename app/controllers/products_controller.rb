@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
 
   def index
-    @products = Product.all
+    @products = Product.all.reverse_order.limit(4)
+    @category_products = Category.find(238).products.limit(4)
   end
 
   def show
@@ -28,7 +29,7 @@ class ProductsController < ApplicationController
       if @product.save
         redirect_to root_path
       else
-        @parents = Category("id ASC").limit(13)
+        @parents = Category.order("id ASC").limit(13)
         render :new
       end
   end
