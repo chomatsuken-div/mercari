@@ -82,8 +82,8 @@
               送料込み
           .card
             = form_tag(product_payments_path(@product), method: :post) do
-              .card-body
-                = submit_tag("購入する", class: "btn btn-primary")
+              .card__body
+                = submit_tag("購入する", class: "card__body__btn-primary")
 
             = link_to "カード登録画面に戻る", new_card_path, class: "btn btn-info clerfix"
           .itemDetail 詳細情報

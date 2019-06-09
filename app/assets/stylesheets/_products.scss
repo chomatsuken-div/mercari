@@ -365,8 +365,8 @@
         }
 
         .card{
-          .card-body{
-            .btn.btn-primary{
+          &__body{
+            &__btn-primary{
               width: 100%;
               background-color: red;
               color: white;
