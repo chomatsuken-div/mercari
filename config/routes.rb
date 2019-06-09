@@ -13,10 +13,12 @@ Rails.application.routes.draw do
     member do
       post "purchase"
     end
+    resources :payments, only: :create
   end
 
   namespace :api do
     resources :categories, only: :new, defaults: { format: 'json' }
   end
+  resources :cards, only: [:new, :create]
 
 end

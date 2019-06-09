@@ -363,6 +363,17 @@
             }
           }
         }
+
+        .card{
+          &__body{
+            &__btn-primary{
+              width: 100%;
+              background-color: red;
+              color: white;
+              border-radius: 20px;
+            }
+          }
+        }
         .buyBtn {
         }
         .itemDetail {
