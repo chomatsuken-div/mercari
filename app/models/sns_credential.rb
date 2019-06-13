@@ -1,6 +1,13 @@
 class SnsCredential < ApplicationRecord
   belongs_to :user, optional: true
 
+  validates :provider,
+    presence: true,
+    uniquness: { scope: [:uid]  }
+
+  validates :uid,
+    presence: true
+
   def self.from_omniauth(auth)
     sns = where(provider: auth.provider, uid: auth.uid).first_or_create
     user = sns.user || User.new(
