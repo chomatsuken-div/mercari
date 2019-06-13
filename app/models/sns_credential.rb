@@ -3,7 +3,7 @@ class SnsCredential < ApplicationRecord
 
   validates :provider,
     presence: true,
-    uniquness: { scope: [:uid]  }
+    uniqueness: { scope: [:uid]  }
 
   validates :uid,
     presence: true
