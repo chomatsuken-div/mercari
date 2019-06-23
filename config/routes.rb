@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :products, only: [:index, :new, :create, :show] do
+  resources :products, only: [:index, :new, :create, :show, :destroy] do
     member do
       post "purchase"
     end

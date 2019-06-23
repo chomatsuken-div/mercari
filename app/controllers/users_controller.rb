@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   end
 
   def listings
-    @products = current_user.products.where(transaction_status: 'listing')
+    @products = current_user.products.where(status: 0)
   end
 
   def in_progress

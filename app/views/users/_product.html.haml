@@ -1,10 +1,10 @@
 %li.itemList
   = link_to product_path(product) do
-    - if product_soldout?(product)
+    -# - if product_soldout?(product)
       .soldout--small
       .soldoutText--small 売切
     %figure.iconPic
-      = image_tag "#{product.captured_images.first.content}"
+      = image_tag "#{product.images.first.src}"
     .contents
       .content__body #{product.name}
       .content__price ¥ #{product.price}

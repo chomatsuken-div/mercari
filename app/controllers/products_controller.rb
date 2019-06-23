@@ -34,9 +34,16 @@ class ProductsController < ApplicationController
       end
   end
 
+  def destroy
+    product = Product.find(params[:id])
+    product.destroy
+    redirect_to root_path
+  end
+
   private
 
   def product_params
     params.require(:product).permit(:name, :detail, :size, :category_id, :brand_id, :state_id, :shopping_fee_id, :prefecture_code,:expected_date_id, :price,  images_attributes: [:src]).merge(user_id: current_user.id)
   end
+
 end

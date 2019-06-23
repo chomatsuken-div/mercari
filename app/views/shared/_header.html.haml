@@ -26,11 +26,10 @@
       - if user_signed_in?
         %ul.listsRight
           %li.listsRight__item
-            = link_to "" do
+            = link_to user_path(current_user.id) do
               = image_tag("member_photo_noimage_thumb.png", size: "32x32",)
               %span
               = current_user.nickname
-              = link_to "ログアウト", destroy_user_session_path, method: :delete
           %li.listsRight__item
             = link_to "#" do
               = fa_icon "bell", text: "お知らせ"
