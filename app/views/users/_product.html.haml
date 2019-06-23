@@ -1,6 +1,6 @@
 %li.itemList
   = link_to product_path(product) do
-    -# - if product_soldout?(product)
+    - if product.product_soldout?(product)
       .soldout--small
       .soldoutText--small 売切
     %figure.iconPic
