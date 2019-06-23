@@ -84,8 +84,12 @@
             = form_tag(product_payments_path(@product), method: :post) do
               .card__body
                 = submit_tag("購入する", class: "card__body__btn-primary")
-
             = link_to "カード登録画面に戻る", new_card_path, class: "btn btn-info clerfix"
+        - if @product.user_id == current_user.id
+          .product__delete
+            = form_for(product_path(@product), method: :delete) do
+              .product__delete__body
+                = submit_tag("削除する", class: "product__delete__body__btn")
           .itemDetail 詳細情報
           %ul
             - if user_signed_in?

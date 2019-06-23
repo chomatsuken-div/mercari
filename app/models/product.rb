@@ -16,5 +16,8 @@ class Product < ApplicationRecord
     belongs_to_active_hash :shopping_fee
     belongs_to_active_hash :expected_date
 
+    def product_soldout?(product)
+        product.status == 2
+    end
 
 end
