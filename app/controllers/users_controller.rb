@@ -13,23 +13,28 @@ class UsersController < ApplicationController
   end
 
   def listings
-    @products = current_user.products.where(status: 0)
+    # status == 0 出品中
+    @products = current_user.seller_products.where(status: 0)
   end
 
   def in_progress
-    @products = current_user.products.where(transaction_status: 'in_progress')
+    # status == 1 取引中
+    @products = current_user.seller_products.where(status: 1)
   end
 
   def completed
-    @products = current_user.products.where(transaction_status: 'completed')
+    # status == 2 売却済
+    @products = current_user.seller_products.where(status: 2)
   end
 
   def purchase
-    @products = Product.is_purchased(current_user.id).where(transaction_status: 'in_progress')
+    # status == 1 取引中
+    @products = current_user.buyer_products.where(status: 1)
   end
 
   def purchased
-    @products = Product.is_purchased(current_user.id).where(transaction_status: 'completed')
+    # status == 2 購入済
+    @products = current_user.buyer_products.where(status: 2)
   end
 
 end
