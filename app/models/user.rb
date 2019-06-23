@@ -6,7 +6,7 @@ class User < ApplicationRecord
          omniauth_providers: [:facebook, :google_oauth2]
 
   validates :nickname,
-    presence: true, length: { maximum: 6 },
+    presence: true, length: { maximum: 20 },
     uniqueness: true
 
   validates :email,
@@ -14,6 +14,8 @@ class User < ApplicationRecord
     uniqueness: true
 
   validates :password, presence: true, if: :sns?
+  validates :password, length: {minimum: 6, maximum: 128}
+
 
   has_many :sns_credentials, dependent: :destroy
   has_one :card
