@@ -2,15 +2,7 @@
 %nav.breadCrumbs
   %ul
     %li
-      = link_to "メルカリ", root_path
-    %li
-      = fa_icon "angle-right"
-    %li
-      = link_to " マイページ", user_path(current_user)
-    %li
-      = fa_icon "angle-right"
-    %li
-      %p 出品した商品 - 出品中
+      =render 'shared/breadcrumbs'
 .main
   .contents
     = render "leftcontent"
