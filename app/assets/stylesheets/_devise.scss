@@ -41,18 +41,57 @@
         text-align: center;
         font-weight: bold;
         &--narrow {
-          padding: 40px 64px 0;
-          .deviseBtn--blue {
+          padding: 40px 64px;
+          .deviseBtn--skyblue {
             display: block;
             height: 40px;
             margin: 40px 0;
             background: $skyBlue;
             text-align: center;
             width: 320px;
-            font-size: 16px;
+            font-size: 12px;
             line-height: 40px;
             color: $white;
             text-decoration: none;
+          }
+          .deviseBtn--blue{
+            display: block;
+            height: 40px;
+            margin: 40px 0;
+            background: #385185;
+            text-align: center;
+            width: 320px;
+            line-height: 30px;
+            a{
+              font-size: 12px;
+              color: $white;
+              text-decoration: none;
+            }
+          }
+          .deviseBtn--white{
+            display: block;
+            height: 40px;
+            margin: 40px 0;
+            text-align: center;
+            width: 318px;
+            font-size: 12px;
+            line-height: 40px;
+            color: black;
+            text-decoration: none;
+            border: solid 1px;
+          }
+          .btn--sns{
+            position: relative;
+            .sns--i{
+              width: 30px;
+              position: absolute;
+              top: 13%;
+              left: 16px;
+              color: #385185;
+              font-family: 'icon-font';
+              background-color: white;
+
+            }
           }
         }
       }
