@@ -20,7 +20,6 @@
                     .js-file_group{data: {index: i.index}}
                       = i.file_field :src, class: "js-file"
                       %p ドロップアンドドラッグ<br>またはクリックしてファイルをアップロード
-                      -# %span.js-remove 削除
           .formSection
             .productForm__field
               = f.label :商品名
@@ -48,6 +47,10 @@
                 %br
                 = f.collection_select(:brand_id, Brand.all, :id, :name, {prompt: "---"}, {class: "inputField inputField__select", required: false})
               .resultLists
+              .productForm__field
+                = f.label :サイズ
+                %br
+                = f.select(:size, [["S"], ["M"],["L"]], {prompt: "---"}, {class: "inputField inputField__select", required: false})
               .productForm__field
                 = f.label :商品の状態
                 %span.formRequired 必須

@@ -7,6 +7,12 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @product_previous = Product.where('id < ? ', @product.id).first
+    @product_next = Product.where('id > ? ', @product.id).first
+    @product_state = State.find(@product.state_id)
+    @product_shopping_fee =ShoppingFee.find(@product.shopping_fee_id)
+    @product_prefecture = JpPrefecture::Prefecture.find(@product.prefecture_code)
+    @product_expected_date = ExpectedDate.find(@product.expected_date_id)
   end
 
   def new

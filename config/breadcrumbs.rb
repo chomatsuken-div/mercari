@@ -8,6 +8,11 @@ crumb :products_search do
   parent :root
 end
 
+crumb :product_show do
+  link "#{Product.find(params[:id]).name}", product_path(params[:id])
+  parent :root
+end
+
 # ユーザーパンくず
 crumb :user_show do
   link "マイページ", user_path(current_user)

@@ -21,4 +21,11 @@ class Product < ApplicationRecord
         product.status == 2
     end
 
+    def previous
+      Products.all.order('created_at desc, id desc').where('created_at <= ? and id < ?', created_at, id).first
+    end
+
+    def next
+      group.posts.order('created_at desc, id desc').where('created_at >= ? and id > ?', created_at, id).reverse.first
+    end
 end
