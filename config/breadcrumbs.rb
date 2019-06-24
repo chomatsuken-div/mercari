@@ -1,7 +1,14 @@
 crumb :root do
-  link 'ホーム', root_path
+  link 'メルカリ', root_path
 end
 
+# 商品パンくず
+crumb :products_search do
+  link "#{params[:keyword]}", products_search_path(params[:keyword])
+  parent :root
+end
+
+# ユーザーパンくず
 crumb :user_show do
   link "マイページ", user_path(current_user)
   parent :root

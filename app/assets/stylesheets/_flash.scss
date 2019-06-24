@@ -1,0 +1,10 @@
+.notification{
+  text-align: center;
+  font-weight: bold;
+  .notice{
+    background-color: cyan;
+  }
+  .alert{
+    background-color: red;
+  }
+}

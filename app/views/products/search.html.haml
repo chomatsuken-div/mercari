@@ -1,0 +1,17 @@
+= render "shared/header"
+%nav.breadCrumbs
+  %ul
+    %li
+      =render 'shared/breadcrumbs'
+.searchMain
+  .contentLeft
+    .selectBox
+  .contentRight
+    %h2.searchHead
+      = @keyword
+      %span.searchHead__text の検索結果
+    .search-resultHead-text
+      = "1-#{@products.length}件表示"
+    .resultsItems
+      .productLists{id: "slickLists--3"}
+        = render partial: 'products/product', collection: @products
