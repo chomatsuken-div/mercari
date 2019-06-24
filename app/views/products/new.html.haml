@@ -6,7 +6,6 @@
       .productForm
         = form_for @product do |f|
           .formSection
-            = f.hidden_field :user_id, value: current_user.id
             .productForm__field.productForm__field--top
               = f.label :出品画像
               %span.formRequired 必須

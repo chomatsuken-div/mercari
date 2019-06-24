@@ -19,7 +19,8 @@ class User < ApplicationRecord
 
   has_many :sns_credentials, dependent: :destroy
   has_one :card
-  has_many :products
+  has_many :buyer_products, class_name: 'Product', foreign_key: 'buyer_id'
+  has_many :seller_products, class_name: 'Product', foreign_key: 'seller_id'
 
   def sns?
     @sns == nil

@@ -52,7 +52,7 @@ gem 'ancestry'
 gem 'enum_help'
 gem 'rails-i18n'
 gem 'payjp'
-
+gem "gretel"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

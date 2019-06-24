@@ -4,7 +4,8 @@ class Product < ApplicationRecord
 
     belongs_to :category
     belongs_to :brand
-    belongs_to :user
+    belongs_to :seller, class_name: 'User'
+    belongs_to :buyer, class_name: 'User', optional: true
 
     enum status: { sell: 0, buyed: 1 , sell_stop: 2}
 
