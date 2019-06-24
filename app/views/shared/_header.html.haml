@@ -4,8 +4,8 @@
       %h1.icon
         = link_to image_tag("logo.svg", size: "134x36"), root_path
       .searchBox
-        = form_tag "", method: :get do
-          %input.searchBox--input{id: "searchInput", name: "key",placeholder: "キーワードから探す"}
+        = form_tag "/products/search", method: :get do
+          %input.searchBox--input{id: "searchInput", name: "keyword",placeholder: "キーワードから探す"}
             =button_to type: "submit" do
               =fa_icon "search"
       %ul.resultLists

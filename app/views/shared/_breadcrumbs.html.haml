@@ -1,5 +1,9 @@
 - case params.values_at :controller, :action
 
+
+- when ['products', 'search']
+  - breadcrumb :products_search
+
 - when ['users', 'show']
   - breadcrumb :user_show
 

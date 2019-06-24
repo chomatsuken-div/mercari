@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: "products#index"
+
   devise_for :users,controllers: { omniauth_callbacks: 'users/omniauth_callbacks',
                                    registrations: 'users/registrations' }
 
@@ -8,6 +9,8 @@ Rails.application.routes.draw do
       get "likes", "listings", "in_progress", "completed", "purchase", "purchased"
     end
   end
+
+  get "products/search", to: "products#search"
 
   resources :products, only: [:index, :new, :create, :show, :destroy] do
     member do
@@ -19,6 +22,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :categories, only: :new, defaults: { format: 'json' }
   end
+
   resources :cards, only: [:new, :create]
 
 end

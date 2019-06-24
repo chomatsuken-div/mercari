@@ -43,6 +43,16 @@ class ProductsController < ApplicationController
     end
   end
 
+  def search
+    @keyword =params[:keyword]
+    @products = Product.where('name LIKE(?)', "%#{@keyword}%").page(params[:page]).per(48)
+    if @products.present?
+      render :search
+    else
+      redirect_to root_path, alert: '商品が見つかりませんでした'
+    end
+  end
+
   private
 
   def product_params

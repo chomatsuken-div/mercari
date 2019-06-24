@@ -636,6 +636,14 @@
       font-size: 26px;
       font-weight: bold;
       margin: 0 0 20px;
+      &__text{
+        font-size: 18px;
+        font-weight: normal;
+      }
+    }
+    .search-resultHead-text{
+      font-size: 12px;
+      color: gray;
     }
     .resultsItems {
       @include clearfix();
