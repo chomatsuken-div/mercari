@@ -67,6 +67,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'pry-rails'
+  gem 'capistrano-rails-console'
 end
 
 group :development do
