@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   get "products/search", to: "products#search"
 
-  resources :products, only: [:index, :new, :create, :show, :destroy] do
+  resources :products do
     member do
       post "purchase"
     end

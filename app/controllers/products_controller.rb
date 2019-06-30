@@ -42,6 +42,29 @@ class ProductsController < ApplicationController
       end
   end
 
+  def edit
+    @product = Product.find(params[:id])
+    @parents = Category.all.order("id ASC").limit(13)
+      if params[:parent]
+        @child_categories = Category.where('ancestry = ?', "#{params[:parent]}")
+      else
+        @grandchild_categories = Category.where('ancestry LIKE ?', "%/#{params[:child]}")
+      end
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
+  def update
+    product = Product.find(params[:id])
+    if product.update(product_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
   def destroy
     product = Product.find(params[:id])
     if product.destroy
