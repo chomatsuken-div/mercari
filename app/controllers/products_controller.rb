@@ -1,8 +1,10 @@
 class ProductsController < ApplicationController
+  before_action :set_search
 
   def index
     @products = Product.all.reverse_order.limit(4)
     @category_products = Category.find(238).products.limit(4)
+    @parents = Category.all.order("id ASC").limit(13)
   end
 
   def show
@@ -50,19 +52,22 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @keyword =params[:keyword]
-    @products = Product.where('name LIKE(?)', "%#{@keyword}%").page(params[:page]).per(48)
-    if @products.present?
-      render :search
-    else
-      redirect_to root_path, alert: '商品が見つかりませんでした'
-    end
+    @keyword = params[:q][:name_cont]
+    @products = @search.result.page(params[:page]).per(48)
+    @parents = Category.all.order("id ASC").limit(13)
   end
 
   private
 
   def product_params
-    params.require(:product).permit(:name, :detail, :size, :category_id, :brand_id, :state_id, :shopping_fee_id, :prefecture_code,:expected_date_id, :price,  images_attributes: [:src]).merge(seller_id: current_user.id)
+    params.require(:product).permit(:name, :detail, :size, :category_root_id, :category_id, :brand_id, :state_id, :shopping_fee_id, :prefecture_code,:expected_date_id, :price,  images_attributes: [:src]).merge(seller_id: current_user.id)
   end
 
+  def set_search
+    @search = Product.ransack(params[:q])
+  end
+
+  def search_params
+    params.require(:q).permit!
+  end
 end

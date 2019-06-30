@@ -613,75 +613,112 @@
 //end
 
 //product--search
-.searchMain {
-  @include clearfix();
-  width: 1020px;
-  padding: 40px;
-  margin: 0 auto;
-  min-height: 100vh;
-  .contentLeft {
-    float: left;
-    width: 280px;
-    margin: 0 40px 0 0;
-    .selectBox {
-      height: 48px;
-      padding: 16px;
-      border: 1px solid $hexGray13;
-      width: 100%;
-      font-size: 18px;
-      background-color: $white;
-    }
-  }
-  .contentRight {
-    float: right;
-    width: 700px;
-    .searchHead {
-      font-size: 26px;
-      font-weight: bold;
-      margin: 0 0 20px;
-      &__text{
+.searchBody{
+  background-color: $hexWhite;
+  .searchMain {
+    @include clearfix();
+    width: 1020px;
+    padding: 40px;
+    margin: 0 auto;
+    min-height: 100vh;
+    .contentLeft {
+      float: left;
+      width: 280px;
+      margin: 0 40px 0 0;
+      .search-sort{
+        .select-wrap{
+          margin: 40px 0;
+          .input-default{
+            width: 100%;
+            margin: 8px 0 0;
+            height: 48px;
+            padding: 10px 16px 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: #fff;
+            line-height: 1.5;
+            font-size: 16px;
+          }
+        }
+      }
+      .selectBox {
+        padding: 16px;
         font-size: 18px;
-        font-weight: normal;
+        background-color: $white;
+        .form-group {
+          margin: 40px 0 0;
+          .input-default {
+            width: 100%;
+            margin: 8px 0 0;
+            height: 48px;
+            padding: 10px 16px 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: #fff;
+            line-height: 1.5;
+            font-size: 16px;
+          }
+        }
+        .search-btn{
+          background: #ea352d;
+          border: 1px solid #ea352d;
+          color: #fff;
+          width: 50%;
+          margin: 10px 25%;
+        }
       }
     }
-    .search-resultHead-text{
-      font-size: 12px;
-      color: gray;
-    }
-    .resultsItems {
-      @include clearfix();
-      .productLists {
-        .productList {
-          margin: 0 0 10px;
-          float: left;
-          width: calc(100% / 3);
-          @include product();
-          a {
-            background-color: $white;
-            display: inline-block;
-            margin: 0 0 20px 0;
-            text-decoration: none;
-            position: relative;
-            .soldout--small {
-              width: 0;
-              height: 0;
-              border-style: solid;
-              border-width: 100px 100px 0 0;
-              border-color: $red transparent transparent transparent;
-              position: absolute;
-              left: 0;
-              top: 0;
-              z-index: 1;
-            }
-            .soldoutText--small {
-              color: $white;
-              position: absolute;
-              left: 3px;
-              top: 15px;
-              font-size: 16px;
-              font-weight: bold;
-              width: 80px;
-              z-index: 1;
+    .contentRight {
+      float: right;
+      width: 700px;
+      .searchHead {
+        font-size: 26px;
+        font-weight: bold;
+        margin: 0 0 20px;
+        &__text{
+          font-size: 18px;
+          font-weight: normal;
+        }
+      }
+      .search-resultHead-text{
+        font-size: 12px;
+        color: gray;
+      }
+      .resultsItems {
+        @include clearfix();
+        .productLists {
+          .productList {
+            margin: 0 0 10px;
+            float: left;
+            width: calc(100% / 3);
+            @include product();
+            a {
+              background-color: $white;
+              display: inline-block;
+              margin: 0 0 20px 0;
+              text-decoration: none;
+              position: relative;
+              .soldout--small {
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 100px 100px 0 0;
+                border-color: $red transparent transparent transparent;
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 1;
+              }
+              .soldoutText--small {
+                color: $white;
+                position: absolute;
+                left: 3px;
+                top: 15px;
+                font-size: 16px;
+                font-weight: bold;
+                width: 80px;
+                z-index: 1;
+              }
             }
           }
         }

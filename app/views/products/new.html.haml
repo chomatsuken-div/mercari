@@ -41,7 +41,7 @@
                   %span.formRequired 必須
                   %br/
                 .select-wrap
-                  = f.collection_select(:category_id, @parents, :id , :name, {prompt: "---"}, {class: "inputField inputField__select", id: "category", required: false})
+                  = f.collection_select(:category_root_id, @parents, :id , :name, {prompt: "---"}, {class: "inputField inputField__select", id: "category", required: false})
               .productForm__field
                 = f.label :ブランド
                 %br

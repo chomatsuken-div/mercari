@@ -3,15 +3,34 @@
   %ul
     %li
       =render 'shared/breadcrumbs'
-.searchMain
-  .contentLeft
-    .selectBox
-  .contentRight
-    %h2.searchHead
-      = @keyword
-      %span.searchHead__text の検索結果
-    .search-resultHead-text
-      = "1-#{@products.length}件表示"
-    .resultsItems
-      .productLists{id: "slickLists--3"}
-        = render partial: 'products/product', collection: @products
+.searchBody
+  .searchMain
+    .contentLeft
+      .search-sort
+        .select-wrap
+          %select{name: :sort_order, class: "input-default"}
+            %option{value: "location.pathname", name: "location.pathname"}
+              並び替え
+            %option{value: "price_asc"}
+              価格の安い順
+            %option{value: "price_desc"}
+              価格の高い順
+            %option{value: "created_at_asc"}
+              出品の古い順
+            %option{value: "created_at_desc"}
+              出品の新しい順
+      .selectBox
+        %h3.visible-large 詳細検索
+        = render 'search'
+    .contentRight
+      %h2.searchHead
+        - if @keyword == ""
+          新着商品
+        - else
+          = @keyword
+          %span.searchHead__text の検索結果
+      .search-resultHead-text
+        = "1-#{@products.length}件表示"
+      .resultsItems
+        .productLists{id: "slickLists--3"}
+          = render partial: 'products/product', collection: @products
