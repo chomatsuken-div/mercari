@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20190624074142) do
     t.integer "seller_id", null: false
     t.integer "buyer_id"
     t.string "size"
+    t.integer "category_root_id"
     t.index ["name"], name: "index_products_on_name"
     t.index ["price"], name: "index_products_on_price"
   end
