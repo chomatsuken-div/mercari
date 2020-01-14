@@ -1,0 +1,15 @@
+.devise
+  = render "devise/shared/header"
+  .deviseSection
+    .inner
+      %h2.title 会員情報入力
+      .deviseForm
+        = form_for(@user, url: user_registration_path) do |f|
+          .deviseForm__field.deviseForm__field--top
+            = f.label :カード番号
+            %span.formRequired 必須
+            %br/
+            = f.text_field :nickname, autofocus: true, autocomplete: "off", placeholder: "携帯電話の番号を入力", class: "inputField", required: true
+          .deviseForm__actions
+            = f.submit "登録する", class: "deviseBtn"
+  =render "devise/shared/footer"

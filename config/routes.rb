@@ -3,6 +3,16 @@ Rails.application.routes.draw do
 
   devise_for :users,controllers: { omniauth_callbacks: 'users/omniauth_callbacks',
                                    registrations: 'users/registrations' }
+  
+  devise_scope :user do
+    get  'profile', to: 'users/registrations#profile'
+    get  'phone', to: 'users/registrations#phone'
+    post 'phone', to: 'users/registrations#phone'
+    get  'address', to: 'users/registrations#address'
+    post 'address', to: 'users/registrations#address'
+    get  'card', to: 'users/registrations#card'
+    post  'card', to: 'users/registrations#card'
+  end
 
   resources :users, only: [:show, :new] do
     member do

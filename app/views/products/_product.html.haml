@@ -3,7 +3,7 @@
     .soldout--small
     .soldoutText--small 販売中
     %figure.productList--img
-      = image_tag"#{product.images.first.src}"
+      = image_tag product.images.first.src
     .productList--body
       %h3.name
         = product.name

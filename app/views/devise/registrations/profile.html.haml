@@ -4,8 +4,7 @@
     .inner
       %h2.title 会員情報入力
       .deviseForm
-        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-          = devise_error_messages!
+        = form_for(@user, url: phone_path) do |f|
           .deviseForm__field.deviseForm__field--top
             = f.label :ニックネーム
             %span.formRequired 必須
@@ -26,6 +25,28 @@
             %span.formRequired 必須
             %br/
             = f.password_field :password_confirmation, autocomplete: "off", placeholder: "６文字以上", class: "inputField", required: false
+
+          .deviseForm__field.deviseForm__field--top
+            = f.label :お名前（全角）
+            %span.formRequired 必須
+            %br/
+            = f.text_field :last_name, autofocus: true, autocomplete: "off", placeholder: "例）山田", class: "inputField-half", required: true
+            = f.text_field :first_name, autofocus: true, autocomplete: "off", placeholder: "例）彩", class: "inputField-half", required: true
+
+          .deviseForm__field.deviseForm__field--top
+            = f.label :お名前カナ（全角）
+            %span.formRequired 必須
+            %br/
+            = f.text_field :last_name_kana, autofocus: true, autocomplete: "off", placeholder: "例）山田", class: "inputField-half", required: true
+            = f.text_field :first_name_kana, autofocus: true, autocomplete: "off", placeholder: "例）彩", class: "inputField-half", required: true
+
+          .deviseForm__field.deviseForm__field--top
+            = f.label :生年月日
+            %span.formRequired 必須
+            %br/
+            = raw sprintf(f.date_select(:birthday, prefix:'birthday',with_css_classes:'XXXXX', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),
+            '年 ', '月 ') + '日'
+
           .deviseForm__field
             = recaptcha_tags
           .deviseForm__actions

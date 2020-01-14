@@ -1,0 +1,54 @@
+.devise
+  = render "devise/shared/header"
+  .deviseSection
+    .inner
+      %h2.title 会員情報入力
+      .deviseForm
+        = form_for(@user, url: card_path) do |f|
+          = f.fields_for :address do |address|
+            .deviseForm__field.deviseForm__field--top
+              = address.label :お名前（全角）
+              %span.formRequired 必須
+              %br/
+              = address.text_field :last_name, autofocus: true, autocomplete: "off", placeholder: "例）山田", class: "inputField-half", required: true
+              = address.text_field :first_name, autofocus: true, autocomplete: "off", placeholder: "例）彩", class: "inputField-half", required: true
+
+            .deviseForm__field.deviseForm__field--top
+              = address.label :お名前カナ（全角）
+              %span.formRequired 必須
+              %br/
+              = address.text_field :last_name_kana, autofocus: true, autocomplete: "off", placeholder: "例）山田", class: "inputField-half", required: true
+              = address.text_field :first_name_kana, autofocus: true, autocomplete: "off", placeholder: "例）彩", class: "inputField-half", required: true
+
+            .deviseForm__field.deviseForm__field--top
+              = address.label :郵便番号
+              %span.formRequired 必須
+              %br/
+              = address.text_field :postcode, autofocus: true, autocomplete: "off", placeholder: "例）山田太郎", class: "inputField", required: true
+
+            .deviseForm__field.deviseForm__field--top
+              = address.label :都道府県
+              %span.formRequired 必須
+              %br/
+              = address.text_field :prefecture_code, autofocus: true, autocomplete: "off", placeholder: "例）山田太郎", class: "inputField", required: true
+
+            .deviseForm__field.deviseForm__field--top
+              = address.label :市区町村
+              %span.formRequired 必須
+              %br/
+              = address.text_field :address_city, autofocus: true, autocomplete: "off", placeholder: "例）山田太郎", class: "inputField", required: true
+
+            .deviseForm__field.deviseForm__field--top
+              = address.label :番地
+              %span.formRequired 必須
+              %br/
+              = address.text_field :address_street, autofocus: true, autocomplete: "off", placeholder: "例）山田太郎", class: "inputField", required: true
+
+            .deviseForm__field.deviseForm__field--top
+              = address.label :マンション名等
+              %span.formRequired 必須
+              %br/
+              = address.text_field :address_building, autofocus: true, autocomplete: "off", placeholder: "例）山田太郎", class: "inputField", required: true
+          .deviseForm__actions
+            = f.submit "次へ進む", class: "deviseBtn"
+  =render "devise/shared/footer"
