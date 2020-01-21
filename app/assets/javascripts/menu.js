@@ -65,6 +65,8 @@ $(document).on('turbolinks:load', function() {
 
     $(document).on('mouseleave', '.tree', function(){
         $('.tree').addClass('displayNone')
+        $('.childcategoryTree').empty()
+        $('.grandchildcategoryTree').empty()
     });
 
     
