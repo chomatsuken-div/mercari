@@ -15,8 +15,11 @@
           = link_to "カテゴリー", "", {id: "catBtn"}
           .tree.displayNone
             %ul.categoryTree
-              - [].each do |category|
-                %li.categoryTree--item= link_to "#{category.name}", "", {}
+              - @parents.each do |category|
+                %li.categoryTree--item{'data-category_id':category.id}
+                  = link_to "#{category.name}", ""
+            %ul.childcategoryTree
+            %ul.grandchildcategoryTree                
         %li.listsLeft__item
           = link_to "ブランド", "", {id: "brandBtn"}
           %ul.brandsPulldown.displayNone

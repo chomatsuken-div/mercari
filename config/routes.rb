@@ -26,6 +26,9 @@ Rails.application.routes.draw do
     member do
       post "purchase"
     end
+    collection do
+      get "category_child"
+    end
     resources :payments, only: :create
   end
 

@@ -431,12 +431,12 @@ body {
 .tree {
   z-index: 2;
   position: absolute;
-  background-color: $white;
   width: 789px;
   @include clearfix();
   .categoryTree {
     background-color: $white;
     float: left;
+    border: black;
     &--item {
       a {
         line-height: 40px;
@@ -492,4 +492,24 @@ body {
       width: 250px;
     }
   }
+}
+
+.active{
+  display: block;
+}
+
+.childcategoryTree{
+    position: absolute;
+    left: 263px;
+    background-color: red;
+    border: solid;
+    width: 35%;
+}
+
+.grandchildcategoryTree{
+  position: absolute;
+  left: 545px;
+  background-color: white;
+  border: solid;
+  width: 35%;
 }

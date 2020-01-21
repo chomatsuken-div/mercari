@@ -34,6 +34,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    binding.pry
       if @product.save
         redirect_to root_path
       else
@@ -78,6 +79,14 @@ class ProductsController < ApplicationController
     @keyword = params[:q][:name_cont]
     @products = @search.result.page(params[:page]).per(48)
     @parents = Category.all.order("id ASC").limit(13)
+  end
+
+  def category_child
+    @category_parent = Category.find(params[:category_id])
+    @category_children = @category_parent.children
+    respond_to do |format|
+      format.json
+    end
   end
 
   private
