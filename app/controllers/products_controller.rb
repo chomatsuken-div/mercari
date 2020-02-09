@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :category_child]
   before_action :set_search
 
   def index
@@ -8,6 +9,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @parents = Category.all.order("id ASC").limit(13)
     @product = Product.find(params[:id])
     @product_previous = Product.where('id < ? ', @product.id).first
     @product_next = Product.where('id > ? ', @product.id).first

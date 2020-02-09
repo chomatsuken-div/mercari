@@ -10,6 +10,7 @@ class PaymentsController < ApplicationController
     currency: 'jpy',
     customer: customer_id,
     )
+    product.status = 1
     redirect_to root_path
   end
 

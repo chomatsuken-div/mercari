@@ -4,12 +4,17 @@
     .inner
       %h2.title 会員情報入力
       .deviseForm
-        = form_for(@user, url: user_registration_path) do |f|
+        = form_tag(user_registration_path, method: :post, id:'charge-form') do
+          %span.charge-errors
+          %h4 支払い
           .deviseForm__field.deviseForm__field--top
-            = f.label :カード番号
-            %span.formRequired 必須
-            %br/
-            = f.text_field :nickname, autofocus: true, autocomplete: "off", placeholder: "携帯電話の番号を入力", class: "inputField", required: true
+            = text_field_tag :number, '', {maxlength: "16", placeholder: "1234 1234 1234 1234",type: "text",id: "payment_card_no"}
+          .deviseForm__field.deviseForm__field--top
+            = text_field_tag :cvc, '', {maxlength: "3", placeholder: "123",type: "text",id: "payment_card_security_code"}
+          .deviseForm__field.deviseForm__field--top
+            = text_field_tag :exp_month, '', {maxlength: "2", placeholder: "月", type: "text",id: "payment_card_expire_mm"}
+          .deviseForm__field.deviseForm__field--top
+            = text_field_tag :exp_year, '',{maxlength: "4", placeholder: "年", type: "text",id: "payment_card_expire_yy"}
           .deviseForm__actions
-            = f.submit "登録する", class: "deviseBtn"
+            = submit_tag '登録', id: "card-save"
   =render "devise/shared/footer"

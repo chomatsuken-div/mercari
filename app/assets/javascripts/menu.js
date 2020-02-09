@@ -31,7 +31,6 @@ $(document).on('turbolinks:load', function() {
             dataType: 'json'
         })
         .done(function(childCategory) {
-            console.log(childCategory)
             childCategory.forEach(function(category){
                 let html = appendChildcategory(category)
                 $('.childcategoryTree').append(html)
@@ -52,7 +51,6 @@ $(document).on('turbolinks:load', function() {
             dataType: 'json'
         })
         .done(function(category) {
-            console.log(category)
             category.forEach(function(category){
                 let html = appendGrandcategory(category)
                 $('.grandchildcategoryTree').append(html)

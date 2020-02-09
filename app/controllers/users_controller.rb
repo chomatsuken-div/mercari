@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_search, only: [:show]
   def show
+    @parents = Category.all.order("id ASC").limit(13)
     @user = current_user
   end
 

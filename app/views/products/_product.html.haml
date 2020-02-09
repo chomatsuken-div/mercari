@@ -1,16 +1,34 @@
-.productList
-  = link_to product_path(product) do
-    .soldout--small
-    .soldoutText--small 販売中
-    %figure.productList--img
-      = image_tag product.images.first.src
-    .productList--body
-      %h3.name
-        = product.name
-      .details
-        %ul
-          %li
-            = "#{product.price}円"
-          %li
-            = fa_icon "heart", class: "likeIcon", text: "hoge"
-        %p (税込)
+- if product.status == 'sell'
+  .productList
+    = link_to product_path(product) do
+      .soldout--small
+      .soldoutText--small 販売中
+      %figure.productList--img
+        = image_tag product.images.first.src
+      .productList--body
+        %h3.name
+          = product.name
+        .details
+          %ul
+            %li
+              = "#{product.price}円"
+            %li
+              = fa_icon "heart", class: "likeIcon", text: "hoge"
+          %p (税込)
+- if product.status != 'sell'
+  .productList
+    = link_to root_path do
+      .soldout--small
+      .soldoutText--small 売り切れ
+      %figure.productList--img
+        = image_tag product.images.first.src
+      .productList--body
+        %h3.name
+          = product.name
+        .details
+          %ul
+            %li
+              = "#{product.price}円"
+            %li
+              = fa_icon "heart", class: "likeIcon", text: "hoge"
+          %p (税込)

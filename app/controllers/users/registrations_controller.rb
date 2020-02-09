@@ -34,6 +34,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
     user = User.new(session['user'])
     user.build_address(session['address'])
     if user.save
+      customer = Payjp::Customer.create(
+        description: 'test',
+        card: params[:pay_id]
+      )
+      card = Card.new(
+        pay_id: params[:pay_id],
+        customer_id: customer.id,
+        user_id: user.id
+      )
+      card.save
+      sign_in(user)
       render 'create'
     end
     # if session['devise.sns_id']
@@ -55,6 +66,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       user.phone_number = nil
       session['user'] = profile_params
     else
+      @user = User.new
       render :profile
     end
   end
@@ -65,7 +77,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if user.valid?
       session['user']['phone_number'] = params[:user][:phone_number]
     else
-      render :profile
+      @user = User.new
+      render :phone
     end
   end
 
@@ -75,6 +88,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if user.valid?
       session['address'] = address_params
     else
+      @user = User.new
       render :address
     end
   end
