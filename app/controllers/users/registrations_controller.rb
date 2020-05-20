@@ -34,6 +34,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     user = User.new(session['user'])
     user.build_address(session['address'])
     if user.save
+      binding.pry
       customer = Payjp::Customer.create(
         description: 'test',
         card: params[:pay_id]
@@ -44,6 +45,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         user_id: user.id
       )
       card.save
+      
       sign_in(user)
       render 'create'
     end

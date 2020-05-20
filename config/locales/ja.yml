@@ -1,4 +1,12 @@
 ja:
+  activerecord:
+    models:
+      user: ユーザー
+      image: 画像
+    attributes:
+      product:
+        id:
+        images: 画像
   enums:
    product:
      status:
